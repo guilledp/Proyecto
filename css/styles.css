@@ -1,0 +1,16 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+.navbar-brand{
+  width: 50%;
+}
+
+footer {
+  text-align: center;
+}
