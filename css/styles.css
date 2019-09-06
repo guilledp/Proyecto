@@ -11,6 +11,10 @@
   width: 50%;
 }
 
+#NavBar{
+	justify-content: flex-end;
+}
+
 footer {
   text-align: center;
 }
