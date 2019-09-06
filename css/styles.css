@@ -11,10 +11,29 @@
   width: 50%;
 }
 
+.curso{
+	margin-bottom: 20px;
+}
+
+.cursos{
+	margin-top:20px;
+}
+
+.search{
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.vermas{
+	text-align: center;
+	margin-top: 20px;
+}
 #NavBar{
 	justify-content: flex-end;
 }
 
 footer {
+	margin-top: 30px;
   text-align: center;
+	color:lightgrey;
 }
