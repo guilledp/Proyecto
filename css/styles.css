@@ -17,6 +17,10 @@
 
 .cursos{
 	margin-top:20px;
+	justify-content: space-evenly;
+	padding-left: 25px;
+	padding-right: 25px;
+	justify-content: flex-end;
 }
 
 .search{
@@ -36,4 +40,30 @@ footer {
 	margin-top: 30px;
   text-align: center;
 	color:lightgrey;
+}
+
+.login{
+	min-block-size: -webkit-fill-available;
+	align-items: center;
+	justify-content: center;
+	margin: 0px;
+}
+
+.logo{
+	margin-bottom: 20px;
+}
+
+.botones{
+text-align: right;
+}
+
+.perfil{
+	margin-top: 25px;
+	justify-content:space-around;
+	padding: 25px;
+
+}
+
+#imagen_perfil{
+max-width: 90px;
 }
