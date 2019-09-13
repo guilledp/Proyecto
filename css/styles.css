@@ -67,3 +67,15 @@ text-align: right;
 #imagen_perfil{
 max-width: 90px;
 }
+
+.terminos{
+	margin-top: 5px;
+}
+
+.terminos label{
+	font-size: small;
+}
+
+.terminos input{
+	vertical-align: middle;
+}
