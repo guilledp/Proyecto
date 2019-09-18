@@ -28,10 +28,10 @@
           <div class=" navbar-collapse show" id="NavBar"> <!--Agregar show-->
 
             <div class="navbar-nav align-items-end">
-              <a class="nav-item nav-link active" href="index.html">Home</a>
+              <a class="nav-item nav-link active" href="index.php">Home</a>
               <a class="nav-item nav-link" href="#">Mis Certificados</a>
-              <a class="nav-item nav-link" href="profile.html">Perfil</a>
-              <a class="nav-item nav-link" href="login.html">Salir</a>
+              <a class="nav-item nav-link" href="profile.php">Perfil</a>
+              <a class="nav-item nav-link" href="login.php">Salir</a>
             </div>
 
           </div>
@@ -79,8 +79,8 @@
 
       <div class="botones">
 
-        <a href="index.html" class="btn btn-secondary" >cancelar</a>
-        <a href="profile.html" class="btn btn-primary" >Guardar cambios</a>
+        <a href="index.php" class="btn btn-secondary" >cancelar</a>
+        <a href="profile.php" class="btn btn-primary" >Guardar cambios</a>
 
       </div>
 

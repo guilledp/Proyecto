@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
 
- <?php
- require("fun\cursos.php")
- ?>
+<html lang="en" dir="ltr">
 
   <head>
     <meta charset="utf-8">
@@ -33,10 +29,10 @@
           <div class=" navbar-collapse show" id="NavBar"> <!--Agregar show-->
 
             <div class="navbar-nav align-items-end">
-              <a class="nav-item nav-link active" href="index.html">Home</a>
+              <a class="nav-item nav-link active" href="index.php">Home</a>
               <a class="nav-item nav-link" href="#">Mis Certificados</a>
-              <a class="nav-item nav-link" href="profile.html">Perfil</a>
-              <a class="nav-item nav-link" href="login.html">Salir</a>
+              <a class="nav-item nav-link" href="profile.php">Perfil</a>
+              <a class="nav-item nav-link" href="login.php">Salir</a>
             </div>
 
           </div>

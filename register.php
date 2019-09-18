@@ -53,8 +53,8 @@
             <!-- <button type="login" class="btn btn-secondary">Registrarse </button>
             <button type="login" class="btn btn-primary">Login</button> -->
 
-            <a href="login.html" class="btn btn-secondary" >login</a>
-            <a href="register.html" class="btn btn-primary" >Registrarse</a>
+            <a href="login.php" class="btn btn-secondary" >login</a>
+            <a href="register.php" class="btn btn-primary" >Registrarse</a>
 
             <div class="terminos">
               <label class="" for="check1">Acepto los terminos</label>
