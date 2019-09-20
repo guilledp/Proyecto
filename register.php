@@ -14,7 +14,8 @@
 
       <div class="row login">
 
-        <form class="col-md-5 col-xl-3">
+
+        <form action="register.php" method="post" class="col-md-5 col-xl-3">
 
           <div class="logo">
             <img src="img\G-LOGO.png" alt="">
@@ -31,7 +32,7 @@
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="company" placeholder="ID Empresa Ejemplo: AXQCFM">
+              <input type="text" class="form-control" id="" placeholder="ID Empresa Ejemplo: AXQCFM">
             </div>
 
             <div class="form-group">
@@ -54,12 +55,13 @@
             <button type="login" class="btn btn-primary">Login</button> -->
 
             <a href="login.php" class="btn btn-secondary" >login</a>
-            <a href="register.php" class="btn btn-primary" >Registrarse</a>
+            <input type="submit" class="btn btn-primary" value="Registrarse" >
 
             <div class="terminos">
               <label class="" for="check1">Acepto los terminos</label>
               <input class="" type="checkbox" name="check1" value="">
             </div>
+
           </div>
 
           <footer>
@@ -67,8 +69,8 @@
             (c) 2019 Guille
 
           </footer>
-
         </form>
+
 
       </div>
 

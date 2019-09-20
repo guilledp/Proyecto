@@ -2,7 +2,8 @@
 $emailVacio = '';
 $passVacio = '';
 $formatoIncorrecto = '';
-
+$pass ='';
+$email ='';
 
 if ($_POST) {
 
@@ -14,18 +15,19 @@ if ($_POST) {
   elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $formatoIncorrecto = "*el formato es incorrecto, debe ser nombre@ejemplo.com";
   }
-
   if (empty($pass)) {
   $passVacio = "*Debe ingresar una contraseña";
   }
 
-
-
-  echo $emailVacio . $passVacio . $formatoIncorrecto;
+  if ($passVacio == '' && $formatoIncorrecto == '' && $email == 'guille_dp@hotmail.com' && $pass == '1234') {
+    header("location: index.php");
+  }else {
+    $passVacio = "*El usuario no existe o la contraseña es incorrecta.";
+  }
 
 }
 
-
+// echo var_dump($passVacio) . var_dump($formatoIncorrecto) . var_dump($email) . var_dump($pass);
 
 ?>
 
@@ -52,13 +54,15 @@ if ($_POST) {
             <img src="img\G-LOGO.png" alt="">
           </div>
 
-            <div class="form-group">
-              <input type="email" class="form-control" id="email" name="email" placeholder="email">
+            <div class="loginform form-group">
+              <input type="DSDFSD" class="form-control" id="email" name="email" placeholder="email" value="<?php echo isset($email)? $email:""; ?>">
             </div>
+            <p class="invalid-feedback"><?php  echo $emailVacio . $formatoIncorrecto;?></p>
 
-            <div class="form-group">
+            <div class="loginform form-group">
               <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" >
             </div>
+            <p class="invalid-feedback"><?php  echo $passVacio;?></p>
 
 
           <div class="botones">

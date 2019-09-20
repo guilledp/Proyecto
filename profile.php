@@ -12,35 +12,7 @@
 
   <body>
 
-    <div class="row">
-    </div>
-      <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-
-          <a class="navbar-brand" href="#">
-            <img src="img\G-LOGO.png" alt="Logo" class="img-fluid" id="Logo">
-          </a>
-
-          <button class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class=" navbar-collapse show" id="NavBar"> <!--Agregar show-->
-
-            <div class="navbar-nav align-items-end">
-              <a class="nav-item nav-link active" href="index.php">Home</a>
-              <a class="nav-item nav-link" href="#">Mis Certificados</a>
-              <a class="nav-item nav-link" href="profile.php">Perfil</a>
-              <a class="nav-item nav-link" href="login.php">Salir</a>
-            </div>
-
-          </div>
-
-        </nav>
-      </header>
-
-
-    </div>
+    <?php include 'header.php'; ?>
 
     <main>
 <div class="perfil row">
@@ -49,40 +21,45 @@
 
       <img id="imagen_perfil" src="img\profile.png" alt="">
 
-      <h4>Datos personales</h4>
+      <h2 class="display-2">Datos personales</h2>
 
-      <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="Nombre">
-      </div>
+      <form action="profile.php" method="post">
 
-      <div class="form-group">
-        <input type="text" class="form-control" id="last-name" placeholder="Apellido">
-      </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="name" placeholder="Nombre">
+        </div>
 
-      <div class="form-group">
-        <input type="text" class="form-control" id="company" placeholder="ID Empresa Ejemplo: AXQCFM">
-      </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="last-name" placeholder="Apellido">
+        </div>
 
-      <h4>Inicio de sesion</h4>
+        <div class="form-group">
+          <input type="text" class="form-control" id="company" placeholder="ID Empresa Ejemplo: AXQCFM">
+        </div>
 
-      <div class="form-group">
-        <input type="email" class="form-control" id="email" placeholder="email">
-      </div>
+        <h2 class="display-2">Inicio de sesion</h2>
 
-      <div class="form-group">
-        <input type="password" class="form-control" id="pass" placeholder="Contraseña">
-      </div>
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" placeholder="email">
+        </div>
 
-      <div class="form-group">
-        <input type="password" class="form-control" id="pass" placeholder="Vuelva a escribir la contraseña">
-      </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="pass" placeholder="Contraseña">
+        </div>
 
-      <div class="botones">
+        <div class="form-group">
+          <input type="password" class="form-control" id="pass" placeholder="Vuelva a escribir la contraseña">
+        </div>
 
-        <a href="index.php" class="btn btn-secondary" >cancelar</a>
-        <a href="profile.php" class="btn btn-primary" >Guardar cambios</a>
+        <div class="botones">
 
-      </div>
+          <a href="index.php" class="btn btn-secondary" >cancelar</a>
+          <input type="submit" class="btn btn-primary" value="Guardar cambios" >
+
+        </div>
+
+      </form>
+
 
 
   </div>

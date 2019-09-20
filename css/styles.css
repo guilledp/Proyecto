@@ -79,3 +79,44 @@ max-width: 90px;
 .terminos input{
 	vertical-align: middle;
 }
+
+.invalid-feedback{
+display: inline-block;
+width: 100%;
+margin-top: 0;
+font-size: 80%;
+color: #dc3545;
+margin-bottom: .25rem;
+}
+
+.loginform {
+    margin-bottom: 0rem;
+}
+
+.display-1{
+	font-size: 2.5rem;
+}
+.display-2{
+	font-size: 2rem;
+}
+
+
+div.videocurso {
+    margin-top: 3rem;
+}
+
+.videocurso {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.videocurso iframe, .videocurso object, .videocurso embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}

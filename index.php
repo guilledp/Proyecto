@@ -13,33 +13,7 @@
 
   <body>
 
-    <div class="row">
-    </div>
-      <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-
-          <a class="navbar-brand" href="#">
-            <img src="img\G-LOGO.png" alt="Logo" class="img-fluid" id="Logo">
-          </a>
-
-          <button class="navbar-toggler">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class=" navbar-collapse show" id="NavBar"> <!--Agregar show-->
-
-            <div class="navbar-nav align-items-end">
-              <a class="nav-item nav-link active" href="index.php">Home</a>
-              <a class="nav-item nav-link" href="#">Mis Certificados</a>
-              <a class="nav-item nav-link" href="profile.php">Perfil</a>
-              <a class="nav-item nav-link" href="login.php">Salir</a>
-            </div>
-
-          </div>
-
-        </nav>
-      </header>
-    </div>
+    <?php include 'header.php'; ?>
 
     <div class="search row">
     <div class="col-md-6">
@@ -59,43 +33,43 @@
       <div class="row cursos">
 
           <div class="col-md-4 curso">
-          <button type="button" class="btn btn-secondary btn-lg btn-block">C003 - Riesgo electrico I</button>
+          <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C003 - Riesgo electrico I</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C005 - Trabajo en altura I</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C005 - Trabajo en altura I</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C003 - Autoelevadores</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C003 - Autoelevadores</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C010 - Lesiones musculoesuqeleticas y LMC</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C010 - Lesiones musculoesuqeleticas y LMC</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C010 - Lesiones musculoesuqeleticas y LMC</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C010 - Lesiones musculoesuqeleticas y LMC</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C014 - Curso basico de Primeros Auxilios</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C014 - Curso basico de Primeros Auxilios</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C041 - Programa especifico SAN CEFERINO</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C041 - Curso de uso seguro de Maquinas Herramientas</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C041 - Programa especifico SAN CEFERINO</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C041 - Programa especifico de prevencion</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C038 - Capacitacion  para huespedes de hotel</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C038 - Capacitacion  para huespedes de hotel</a>
           </div>
 
           <div class="col-md-4 curso">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">C044 - Res 960/15 Autoelevadores (Avanzado)</button>
+            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C044 - Res 960/15 Autoelevadores (Avanzado)</a>
           </div>
 
       </div>
