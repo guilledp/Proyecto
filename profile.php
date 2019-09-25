@@ -1,3 +1,30 @@
+<?php
+
+if ($_POST){
+
+if( $_FILES['avatar']['error'] === 0){
+//mover a la carpeta
+
+  if (!file_exists('avatars')){
+  mkdir('avatars');
+  }
+
+  $ext = pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
+  if ($ext !='png' && $ext !='jpg' && $ext !='jpeg') {
+    $errorFormatoImagen = "El formato debe ser .png, .jpg o .jpeg";
+  }
+
+  move_uploaded_file($_FILES['avatar']['tmp_name'],'avatars/' . $nombreArchivo);
+
+}
+
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,6 +47,12 @@
   <div class="col-md-6">
 
       <img id="imagen_perfil" src="img\profile.png" alt="">
+
+      <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="avatar" id="avatar">
+        <input type="submit" value="Upload Image" name="submit">
+      </form>
 
       <h2 class="display-2">Datos personales</h2>
 

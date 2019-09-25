@@ -15,6 +15,7 @@ if ($_POST) {
   elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $formatoIncorrecto = "*el formato es incorrecto, debe ser nombre@ejemplo.com";
   }
+
   if (empty($pass)) {
   $passVacio = "*Debe ingresar una contraseña";
   }
