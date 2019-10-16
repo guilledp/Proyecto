@@ -4,6 +4,8 @@ $passVacio = '';
 $formatoIncorrecto = '';
 $pass ='';
 $email ='';
+$passRegistrado =false;
+$passRegistrado = false;
 
 if ($_POST) {
 
@@ -20,12 +22,32 @@ if ($_POST) {
   $passVacio = "*Debe ingresar una contraseña";
   }
 
-  if ($passVacio == '' && $formatoIncorrecto == '' && $email == 'guille_dp@hotmail.com' && $pass == '1234') {
-    header("location: index.php");
-  }else {
+
+  if ($passVacio == '' && $formatoIncorrecto == '') {
+
+    $contenidoJson = file_get_contents('json/usuarios.json');
+    $usuarios = json_decode($contenidoJson,true);
+
+    var_dump($usuarios);
+
+              foreach ($usuarios as $usuario) {
+                if ($usuario['email']===$email) {
+                  if (password_verify($pass,$usuario['password'])) {
+                    $usuarioValido = true;
+                    break;
+                  }else {
+                    $usuarioValido = false;
+                  }
+                }
+              }
+
+              echo "usuario valido:  ";
+              var_dump($usuarioValido);
+
+        //header("location: index.php");
+  }else{
     $passVacio = "*El usuario no existe o la contraseña es incorrecta.";
   }
-
 }
 
 // echo var_dump($passVacio) . var_dump($formatoIncorrecto) . var_dump($email) . var_dump($pass);

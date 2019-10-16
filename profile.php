@@ -17,12 +17,9 @@ if( $_FILES['avatar']['error'] === 0){
   move_uploaded_file($_FILES['avatar']['tmp_name'],'avatars/' . $nombreArchivo);
 
 }
-
 }
 
 ?>
-
-
 
 
 <!DOCTYPE html>

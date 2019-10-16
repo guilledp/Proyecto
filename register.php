@@ -1,21 +1,16 @@
 <?php
 
-$errorTerminos ='';
-$errorCampos = '';
-$emailVacio ='';
-$formatoIncorrecto = '';
-$passVacio = '';
-$nombreVacio = '';
-$apellidoVacio = '';
-$empresaVacio = '';
-$rePassVacio = '';
-
 $email = '';
 $nombre ='';
 $apellido = '';
 $idEmpresa = '';
 $password = '';
 $rePass= '';
+$errorPassword ='';
+$errorTerminos ='';
+$formatoIncorrecto='';
+$errorCampos='';
+$contenidoJson='';
 
 if ($_POST) {
 
@@ -28,48 +23,34 @@ if ($_POST) {
 
   //*************VALIDAR EMAIL
   if (empty($email)) {
-  $formatoIncorrecto = "*Ingrese su email";
+  $formatoIncorrecto = "*debe ingresar un email <br>";
   }else {
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $formatoIncorrecto = "*Debe ser nombre@ejemplo.com";
+      $formatoIncorrecto = "*el email debe ser nombre@ejemplo.com <br>";
     }
   }
   //*************VALIDAR EMAIL
 
-  //*************VALIDAR PASS
-  if (empty($password)) {
-  $passVacio = "*Ingrese una contraseña";
+  //*************VERIFICAR QUE TODOS LOS CAMPOS ESTEN COMPLETOS
+  if ($email=='' || $nombre=='' || $apellido=='' || $idEmpresa=='' || $password=='' || $rePass=='')
+  {
+    $errorCampos = '*Debe completar todos los campos <br>';
   }
-  //*************VALIDAR PASS
+  //*************VERIFICAR QUE TODOS LOS CAMPOS ESTEN COMPLETOS
 
-  //*************VALIDAR NOMBRE
-  if (empty($nombre)) {
-  $nombreVacio = "*Ingrese su nombre";
-  }
-  //*************VALIDAR NOMBRE
-
-  //*************VALIDAR APELLIDO
-  if (empty($apellido)) {
-  $apellidoVacio = "*Ingrese su apellido";
-  }
-  //*************VALIDAR APELLIDO
-
-  //*************VALIDAR EMPRESA
-  if (empty($idEmpresa)) {
-  $empresaVacio = "*Ingrese codigo de empresa AXQ323";
-  }
-  //*************VALIDAR EMPRESA
-
-  //*************VALIDAR REPASS
-  if (empty($rePass)) {
-  $rePassVacio = "*Vuelva a escribir la contraseña";
-  }
-  //*************VALIDAR REPASS
+ //*************VALIDAR CONTRASEÑA
+    if ($password!=$rePass) {
+      $errorPassword = '*Las contraseñas no coinciden <br>';
+    }
+  //*************VALIDAR CONTRASEÑA
 
   //*************VALIDAR TODOS LOS CAMPOS
-  if ($formatoIncorrecto =="" && $nombreVacio =="" && $apellidoVacio =="" && $empresaVacio =="" && $passVacio =="" && $rePassVacio =="") {
+  if ($errorPassword =="" && $errorCampos =="" && $formatoIncorrecto =="") {
 
-    $usuario =[
+      $contenidoJson = file_get_contents('json/usuarios.json');
+      $usuarios = json_decode($contenidoJson,true);
+
+      $usuarios[] =[
         'email' => $email,
         'password' => password_hash($password,PASSWORD_DEFAULT),
         'nombre' => $nombre,
@@ -77,63 +58,14 @@ if ($_POST) {
         'idEempresa' => $idEmpresa,
       ];
 
-      $usuarioJson = json_encode($usuario);
-
-      file_put_contents('json/usuarios.json',$usuarioJson);
+      $usuariosJson = json_encode($usuarios);
+      file_put_contents('json/usuarios.json',$usuariosJson);
 
   }else {
-
-
-
-
   }
-  //*************VALIDAR TODOS LOS CAMPOS
-
-
 }
 
-
-
-
-// $errorTerminos ='';
-//
-// if ($_POST) {
-//
-// $_POST['email'] = $email;
-// $_POST['password'] = $password;
-// $_POST['avatar'] = $avatar;
-//
-//   if ($_POST['nombre']==='') {
-//     $nombre='';
-//   }else {
-//     $_POST['nombre'] = $nombre;
-//   }
-//
-// $_POST['apellido'] = $apellido;
-// $_POST['ideEmpresa'] = $idEmpresa;
-//
-//
-// $usuarioJson =[
-//     'email' => $email,
-//     'password' =>password_hash($password,PASSWORD_DEFAULT),
-//     'avatar' => $avatar,
-//     'nombre' => $nombre,
-//     'apellido' => $apellido,
-//     'idEempresa' => $idEmpresa,
-//   ];
-//
-//   json_encode($usuario);
-//
-//   file_put_contents('json/usuarios.json',$usuarioJson);
-//   echo "string";
-//   var_dump($usuarioJson);
-//
-// }
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -160,31 +92,30 @@ if ($_POST) {
           <div class="campos_registro">
 
             <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="<?php echo $formatoIncorrecto != ''? $formatoIncorrecto:"email"; ?>" <?php echo $formatoIncorrecto != ''? 'id = "red"':""; ?>>
+              <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="nombre" placeholder="<?php echo $nombreVacio != ''? $nombreVacio:"Nombre"; ?>" <?php echo $nombreVacio != ''? 'id = "red"':""; ?>>
+              <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $nombre?>">
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="apellido" placeholder="<?php echo $apellidoVacio != ''? $apellidoVacio:"Apellido"; ?>" <?php echo $apellidoVacio != ''? 'id = "red"':""; ?>>
+              <input type="text" class="form-control" name="apellido" placeholder="apellido" value="<?= $apellido?>">
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="idEmpresa" placeholder="<?php echo $empresaVacio != ''? $empresaVacio:"ID Empresa Ejemplo: AXQCFM"; ?>" <?php echo $empresaVacio != ''? 'id = "red"':""; ?>>
+              <input type="text" class="form-control" name="idEmpresa" placeholder="ID Empresa Ejemplo: AXQCFM" value="<?= $idEmpresa?>">
             </div>
 
             <div class="form-group">
-              <input type="password" class="form-control" name="password" placeholder="<?php echo $passVacio != ''? $passVacio:"Contraseña"; ?>" <?php echo $passVacio != ''? 'id = "red"':""; ?>>
+              <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
             </div>
 
             <div class="form-group">
-              <input type="password" class="form-control" name="rePass" placeholder="<?php echo $rePassVacio != ''? $rePassVacio:"Vuelva a escribir la Contraseña"; ?>" <?php echo $rePassVacio != ''? 'id = "red"':""; ?>>
+              <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
             </div>
 
           </div>
-          <p class="invalid-feedback" id="right"><?php  echo $errorCampos;?></p>
 
           <div class="botones">
 
@@ -194,8 +125,9 @@ if ($_POST) {
             <div class="terminos">
               <label class="" for="check1">Acepto los terminos</label>
               <input class="" type="checkbox" name="terminos" value="">
-              <p class="invalid-feedback"><?php  echo $errorTerminos;?></p>
             </div>
+
+            <p class="invalid-feedback"> <?php echo $errorCampos . $formatoIncorrecto . $errorPassword;?></p>
 
           </div>
 
