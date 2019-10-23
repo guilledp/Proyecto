@@ -1,3 +1,15 @@
+<?php
+
+//VERIFICAR SESION
+  session_start();
+  if(!isset($_SESSION['id'])){
+  die(header("location: login.php"));
+  }
+//VERIFICAR SESION
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

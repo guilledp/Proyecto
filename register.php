@@ -61,7 +61,10 @@ if ($_POST) {
       $usuariosJson = json_encode($usuarios);
       file_put_contents('json/usuarios.json',$usuariosJson);
 
-  }else {
+      //SI VA BIEN REDIRIGE A SUCCESS.PHP
+      header("location: login.php?registered=true");
+      //SI VA BIEN REDIRIGE A SUCCESS.PHP
+
   }
 }
 

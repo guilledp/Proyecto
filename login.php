@@ -6,6 +6,14 @@ $pass ='';
 $email ='';
 $passRegistrado =false;
 $passRegistrado = false;
+$usuarioValido = false;
+$success = "";
+
+if (isset($_GET['registered'])) {
+  if ($_GET['registered'] === 'true'){
+    $success =  '    <div class="alert alert-success" role="alert"> Usuario generado con Exito! Inicie sesion aqui.</div>';
+  }
+}
 
 if ($_POST) {
 
@@ -22,35 +30,38 @@ if ($_POST) {
   $passVacio = "*Debe ingresar una contraseña";
   }
 
-
-  if ($passVacio == '' && $formatoIncorrecto == '') {
+  if ($passVacio == '' && $emailVacio == '' && $formatoIncorrecto == '' ) {
 
     $contenidoJson = file_get_contents('json/usuarios.json');
     $usuarios = json_decode($contenidoJson,true);
-
-    var_dump($usuarios);
 
               foreach ($usuarios as $usuario) {
                 if ($usuario['email']===$email) {
                   if (password_verify($pass,$usuario['password'])) {
                     $usuarioValido = true;
-                    break;
                   }else {
                     $usuarioValido = false;
                   }
                 }
               }
 
-              echo "usuario valido:  ";
-              var_dump($usuarioValido);
+          // echo "usuario valido:  ";
+          // var_dump($usuarioValido);
+          // var_dump($usuarios);
 
-        //header("location: index.php");
-  }else{
-    $passVacio = "*El usuario no existe o la contraseña es incorrecta.";
+        if ($usuarioValido =='true') {
+            //INICIA SESION
+            session_start();
+            $_SESSION['id'] = $usuario['email'];
+            header("location: index.php");
+            //INICIA SESION
+        } else {
+          $passVacio = "*El usuario no existe o la contraseña es incorrecta";
+        }
   }
-}
 
-// echo var_dump($passVacio) . var_dump($formatoIncorrecto) . var_dump($email) . var_dump($pass);
+
+}
 
 ?>
 
@@ -69,7 +80,10 @@ if ($_POST) {
 
   <body>
 
+      <?php echo $success; ?>
+
       <div class="row login">
+
 
         <form action="login.php" method="post" class="col-md-5 col-xl-3">
 
@@ -78,7 +92,7 @@ if ($_POST) {
           </div>
 
             <div class="loginform form-group">
-              <input type="DSDFSD" class="form-control" id="email" name="email" placeholder="email" value="<?php echo isset($email)? $email:""; ?>">
+              <input type="email" class="form-control" id="email" name="email" placeholder="email" value="<?php echo isset($email)? $email:""; ?>">
             </div>
             <p class="invalid-feedback"><?php  echo $emailVacio . $formatoIncorrecto;?></p>
 
@@ -104,6 +118,7 @@ if ($_POST) {
           </footer>
 
         </form>
+
 
       </div>
 

@@ -128,3 +128,8 @@ div.videocurso {
 #red::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: red;
 }
+
+.alert{
+	width: 100%;
+	position: fixed;
+}

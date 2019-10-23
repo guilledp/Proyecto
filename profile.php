@@ -1,5 +1,12 @@
 <?php
 
+//VERIFICAR SESION
+  session_start();
+  if(!isset($_SESSION['id'])){
+  die(header("location: login.php"));
+  }
+//VERIFICAR SESION
+
 if ($_POST){
 
 if( $_FILES['avatar']['error'] === 0){
