@@ -9,13 +9,13 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class=" navbar-collapse show" id="NavBar"> <!--Agregar show-->
+  <div class="collapse navbar-collapse" id="NavBar"> <!--Agregar show-->
 
     <div class="navbar-nav align-items-end">
       <a class="nav-item nav-link active" href="index.php">Home</a>
       <a class="nav-item nav-link" href="#">Mis Certificados</a>
       <a class="nav-item nav-link" href="profile.php">Perfil</a>
-      <a class="nav-item nav-link" href="login.php">Salir</a>
+      <a class="nav-item nav-link" href="index.php?logout=bye">Salir</a>
     </div>
 
   </div>

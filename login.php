@@ -1,4 +1,6 @@
 <?php
+
+
 $emailVacio = '';
 $passVacio = '';
 $formatoIncorrecto = '';
@@ -36,6 +38,10 @@ if ($_POST) {
     $usuarios = json_decode($contenidoJson,true);
 
               foreach ($usuarios as $usuario) {
+
+                //echo " <br> usuario registrado <br>" ;
+                //var_dump($usuario['email']);
+
                 if ($usuario['email']===$email) {
                   if (password_verify($pass,$usuario['password'])) {
                     $usuarioValido = true;
@@ -45,6 +51,8 @@ if ($_POST) {
                 }
               }
 
+              //echo " <br> el email que esta en el campo es <br> " . $email;
+
           // echo "usuario valido:  ";
           // var_dump($usuarioValido);
           // var_dump($usuarios);
@@ -52,14 +60,15 @@ if ($_POST) {
         if ($usuarioValido =='true') {
             //INICIA SESION
             session_start();
-            $_SESSION['id'] = $usuario['email'];
+            $_SESSION['id'] = $email;
+            //echo "<br>la sesion esta a nombre de <br>" ;
+            //var_dump($_SESSION['id']);
             header("location: index.php");
             //INICIA SESION
         } else {
           $passVacio = "*El usuario no existe o la contraseña es incorrecta";
         }
   }
-
 
 }
 

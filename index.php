@@ -1,16 +1,11 @@
 <?php
 
-//VERIFICAR SESION
-  session_start();
-  if(!isset($_SESSION['id'])){
-  die(header("location: login.php"));
-  }
-//VERIFICAR SESION
+include_once('session.php');
 
 ?>
 
 
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 
   <head>
     <meta charset="utf-8">

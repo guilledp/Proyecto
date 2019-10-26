@@ -133,3 +133,31 @@ div.videocurso {
 	width: 100%;
 	position: fixed;
 }
+
+.image-upload>input {
+  display: none;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+	padding: 0;
+	margin: 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Top right text */
+.bottom-right {
+
+	line-height: 0;
+	font-size: x-large;
+	position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
