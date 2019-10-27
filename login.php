@@ -69,7 +69,6 @@ if ($_POST) {
           $passVacio = "*El usuario no existe o la contraseña es incorrecta";
         }
   }
-
 }
 
 ?>

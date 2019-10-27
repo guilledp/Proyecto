@@ -161,3 +161,22 @@ div.videocurso {
   bottom: 0px;
   right: 0px;
 }
+
+.image-upload img{
+width: 120px;
+height: 120px;
+object-fit: cover;
+border-radius: 50%;
+}
+
+.image-upload .container{
+width: 100%;
+}
+
+.boton-subir-avatar .btn{
+	width: 130px;
+}
+
+#grupo-avatar{
+	margin: 0px !important;
+}

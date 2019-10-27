@@ -2,49 +2,49 @@
 
 include_once('session.php');
 
+// if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+//   $nombre = $_FILES["archivo"]["name"];
+//   $archivo = $_FILES["archivo"]["tmp_name"];
+//   $ext = pahtinfo($nombre,PATHINFO_EXTENSION);
+//
+//   $miArchivo = dirname(__FILE__) . "/img/useravatar/" . $_SESSION['id'] . $ext;
+//   move_uploaded_file($arcivo, $miArchivo);
+// }
+//
+// $nombreAvatar = $_SESSION['id'];
+
+
 $errorTamaño = "";
 $errorTipo = "";
 $nombreAvatar = $_SESSION['id'];
 
-if (isset($_FILES["fileToUpload"])) {
+if (isset($_FILES["archivo"])) {
 
     $target_dir = "img/useravatar/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $target_file = $target_dir . basename($_FILES["archivo"]["name"]);
+    $ext = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $uploadOk = 1;
 
-    // VERIFICAR SI ES UN ARCHIVO
-    if ($_FILES["fileToUpload"]["tmp_name"] != "") {
-      if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check !== false) {
-          $uploadOk = 1;
-        } else {
-          $uploadOk = 0;
-        }
-      }
-    }
-
-    // VERIFICAR TAMAÑO
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+        // VERIFICAR TAMAÑO
+    if ($_FILES["archivo"]["size"] > (5 * 1024 * 1024)) {
       $errorTamaño =  "El archivo debe pesar menos de 5 MB.";
       $uploadOk = 0;
     }
     // VERIFICAR FORMATO
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
+    if($ext != "jpg" && $ext != "png" && $ext != "jpeg"
+    && $ext != "gif" ) {
       $errorTipo = "seleccione una imagen del tipo JPG, JPEG, PNG o GIF.";
       $uploadOk = 0;
     }
+
     // VERIFICAR ERRORES Y SUBIR EL ARCHIVO
-    if ($uploadOk == 0) {
-    } else {
-      $target_file = $target_dir . $nombreAvatar . "";
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    // PUEDE HABER UN MENSAJE SI SE SUBIO CORRECTAMENTE
-      }
+    if ($uploadOk == 1) {
+      $target_file = $target_dir . $nombreAvatar;
+      move_uploaded_file($_FILES["archivo"]["tmp_name"], $target_file);
+      header("location: profile.php?img=" . rand(1000,9999));
     }
 }
+
 
 if (file_exists('img/useravatar/' . $nombreAvatar)) {
   $nombreAvatar =  "img\\useravatar\\" . $nombreAvatar;
@@ -77,22 +77,22 @@ if (file_exists('img/useravatar/' . $nombreAvatar)) {
   <div class="col-md-6">
 
     <!-- SUBIEENDO ARCHIVOS -->
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" id="grupo-avatar">
       <form action="profile.php" method="post" enctype="multipart/form-data">
 
           <div class="image-upload">
-            <label for="fileToUpload">
 
-              <div class="container">
-                <img src= <?=$nombreAvatar?> alt="Avatar" class="image">
-                <div class="bottom-right"><i class="icon ion-md-create"></i></div>
-              </div>
+          <label for="archivo">
+            <div class="container" id="avatar">
+              <img src= <?=$nombreAvatar?> alt="Avatar" class="">
+              <div class="bottom-right"><i class="icon ion-md-create"></i></div>
+            </div>
+          </label>
 
-            </label>
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="file" name="archivo" id="archivo">
           </div>
 
-          <div class="">
+          <div class="boton-subir-avatar">
             <input class="btn btn-secondary btn-sm" type="submit" value="subir imagen" name="submit">
             <p class="invalid-feedback"> <?=$errorTipo . " " . $errorTamaño;?> </p>
           </div>
