@@ -1,6 +1,5 @@
 <?php
 
-
 $emailVacio = '';
 $passVacio = '';
 $formatoIncorrecto = '';
@@ -34,6 +33,7 @@ if ($_POST) {
 
   if ($passVacio == '' && $emailVacio == '' && $formatoIncorrecto == '' ) {
 
+    //BUSCAR UN USUARIO
     $contenidoJson = file_get_contents('json/usuarios.json');
     $usuarios = json_decode($contenidoJson,true);
 
@@ -50,6 +50,30 @@ if ($_POST) {
                   }
                 }
               }
+    //BUSCAR UN USUARIO
+
+    //SI NO ENCUENTRA UN USUARIO BUSCAR UNA EMPRESA
+    if ($usuarioValido === false) {
+
+      $contenidoJson = file_get_contents('json/empresas.json');
+      $usuarios = json_decode($contenidoJson,true);
+
+                foreach ($usuarios as $usuario) {
+
+                  //echo " <br> usuario registrado <br>" ;
+                  //var_dump($usuario['email']);
+
+                  if ($usuario['email']===$email) {
+                    if (password_verify($pass,$usuario['password'])) {
+                      $usuarioValido = true;
+                    }else {
+                      $usuarioValido = false;
+                    }
+                  }
+                }
+    }
+    //SI NO ENCUENTRA UN USUARIO BUSCAR UNA EMPRESA
+
 
               //echo " <br> el email que esta en el campo es <br> " . $email;
 

@@ -36,49 +36,15 @@ include_once('session.php');
 
     <main>
 
+      //*************REPITE ELCURSO
       <div class="row cursos">
 
           <div class="col-md-4 curso">
           <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C003 - Riesgo electrico I</a>
           </div>
 
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C005 - Trabajo en altura I</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C003 - Autoelevadores</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C010 - Lesiones musculoesuqeleticas y LMC</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C010 - Lesiones musculoesuqeleticas y LMC</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C014 - Curso basico de Primeros Auxilios</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C041 - Curso de uso seguro de Maquinas Herramientas</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C041 - Programa especifico de prevencion</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C038 - Capacitacion  para huespedes de hotel</a>
-          </div>
-
-          <div class="col-md-4 curso">
-            <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C044 - Res 960/15 Autoelevadores (Avanzado)</a>
-          </div>
-
       </div>
+      //*************REPITE ELCURSO
 
       <div class="vermas">
         <button type="button" class="btn btn-primary">ver todos los cursos</button>

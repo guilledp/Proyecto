@@ -11,13 +11,29 @@ $errorTerminos ='';
 $formatoIncorrecto='';
 $errorCampos='';
 $contenidoJson='';
+$cuit = '';
+$empresa = '';
+
+$perfil= 'usuario';
+
+  if (isset($_GET['perfil'])) {
+    $perfil = $_GET['perfil'];
+  }
 
 if ($_POST) {
 
+  if ($_POST['perfil']=='Empresa') {
+    $empresa = $_POST['empresa'];
+    $cuit = $_POST['cuit'];
+  }
+
+  if ($_POST['perfil']=='Usuario') {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $idEmpresa = $_POST['idEmpresa'];
+  }
+
   $email = $_POST['email'];
-  $nombre = $_POST['nombre'];
-  $apellido = $_POST['apellido'];
-  $idEmpresa = $_POST['idEmpresa'];
   $password = $_POST['password'];
   $rePass = $_POST['rePass'];
 
@@ -32,9 +48,22 @@ if ($_POST) {
   //*************VALIDAR EMAIL
 
   //*************VERIFICAR QUE TODOS LOS CAMPOS ESTEN COMPLETOS
-  if ($email=='' || $nombre=='' || $apellido=='' || $idEmpresa=='' || $password=='' || $rePass=='')
-  {
-    $errorCampos = '*Debe completar todos los campos <br>';
+  if ($_POST['perfil']=='Uusario') {
+
+    if ($email=='' || $nombre=='' || $apellido=='' || $idEmpresa=='' || $password=='' || $rePass=='')
+    {
+      $errorCampos = '*Debe completar todos los campos <br>';
+    }
+
+  }
+
+  if ($_POST['perfil']=='Empresa') {
+
+    if ($email=='' || $empresa=='' || $cuit=='' || $password=='' || $rePass=='')
+    {
+      $errorCampos = '*Debe completar todos los campos <br>';
+    }
+
   }
   //*************VERIFICAR QUE TODOS LOS CAMPOS ESTEN COMPLETOS
 
@@ -47,23 +76,46 @@ if ($_POST) {
   //*************VALIDAR TODOS LOS CAMPOS
   if ($errorPassword =="" && $errorCampos =="" && $formatoIncorrecto =="") {
 
-      $contenidoJson = file_get_contents('json/usuarios.json');
-      $usuarios = json_decode($contenidoJson,true);
+      if ($_POST['perfil']=='Usuario') {
+            $contenidoJson = file_get_contents('json/usuarios.json');
+            $usuarios = json_decode($contenidoJson,true);
 
-      $usuarios[] =[
-        'email' => $email,
-        'password' => password_hash($password,PASSWORD_DEFAULT),
-        'nombre' => $nombre,
-        'apellido' => $apellido,
-        'idEempresa' => $idEmpresa,
-      ];
+            $usuarios[] =[
+              'email' => $email,
+              'password' => password_hash($password,PASSWORD_DEFAULT),
+              'nombre' => $nombre,
+              'apellido' => $apellido,
+              'idEempresa' => $idEmpresa,
+            ];
 
-      $usuariosJson = json_encode($usuarios);
-      file_put_contents('json/usuarios.json',$usuariosJson);
+            $usuariosJson = json_encode($usuarios);
+            file_put_contents('json/usuarios.json',$usuariosJson);
 
-      //SI VA BIEN REDIRIGE A SUCCESS.PHP
-      header("location: login.php?registered=true");
-      //SI VA BIEN REDIRIGE A SUCCESS.PHP
+            //SI VA BIEN REDIRIGE A SUCCESS.PHP
+            header("location: login.php?registered=true&perfil=usuario" . $email  . $_POST['perfil']);
+            //SI VA BIEN REDIRIGE A SUCCESS.PHP
+      }
+
+      if ($_POST['perfil']=='Empresa') {
+            $contenidoJson = file_get_contents('json/empresas.json');
+            $usuarios = json_decode($contenidoJson,true);
+
+            $usuarios[] =[
+              'email' => $email,
+              'password' => password_hash($password,PASSWORD_DEFAULT),
+              'empresa' => $empresa,
+              'cuit' => $cuit,
+              ];
+
+            $usuariosJson = json_encode($usuarios);
+            file_put_contents('json/empresas.json',$usuariosJson);
+
+            //SI VA BIEN REDIRIGE A SUCCESS.PHP
+            header("location: login.php?registered=true");
+            //SI VA BIEN REDIRIGE A SUCCESS.PHP
+      }
+
+
 
   }
 }
@@ -94,29 +146,77 @@ if ($_POST) {
 
           <div class="campos_registro">
 
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
+          <!-- SELECCION DE PERFIL -->
+
+            <div class="form-group form-perfil">
+
+              <p>Seleccione un perfil:</p>
+
+              <select class="form-control" name="perfil">
+                <option>Usuario</option>
+                <option>Empresa</option>
+              </select>
+
             </div>
 
-            <div class="form-group">
-              <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $nombre?>">
-            </div>
 
-            <div class="form-group">
-              <input type="text" class="form-control" name="apellido" placeholder="apellido" value="<?= $apellido?>">
-            </div>
+          <!-- SELECCION DE PERFIL -->
 
-            <div class="form-group">
-              <input type="text" class="form-control" name="idEmpresa" placeholder="ID Empresa Ejemplo: AXQCFM" value="<?= $idEmpresa?>">
-            </div>
+          <?php if ($perfil == 'usuario'): ?>
 
-            <div class="form-group">
-              <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
-            </div>
+              <!-- CAMPOS EN CASO DE USUARIOS -->
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
+                </div>
 
-            <div class="form-group">
-              <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
-            </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $nombre?>">
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="apellido" placeholder="apellido" value="<?= $apellido?>">
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="idEmpresa" placeholder="ID Empresa Ejemplo: AXQCFM" value="<?= $idEmpresa?>">
+                </div>
+
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
+                </div>
+
+                <div class="form-group">
+                  <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
+                </div>
+                <!-- CAMPOS EN CASO DE USUARIOS -->
+
+          <?php endif; ?>
+
+          <?php if ($perfil == 'empresa'): ?>
+
+                <!-- CAMPOS EN CASO DE EMPRESA -->
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="empresa" placeholder="Razon Social" value="<?= $idEmpresa?>">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="number" class="form-control" name="cuit" placeholder="CUIT Solo numeros." value="<?= $cuit?>">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
+                  </div>
+                  <!-- CAMPOS EN CASO DE EMPRESA -->
+
+          <?php endif; ?>
 
           </div>
 

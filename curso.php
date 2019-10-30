@@ -48,7 +48,6 @@ include_once('session.php');
 
     </div>
 
-
     <div class="">
 
       <h2 class="display-2">Material adicional</h2>
