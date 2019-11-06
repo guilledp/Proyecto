@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-//var_dump($_SESSION['id']);
+var_dump($_SESSION['id']);
+var_dump($_SESSION['tipo']);
 
 if (isset($_GET['logout'])) {
   if ($_GET['logout'] === 'bye'){

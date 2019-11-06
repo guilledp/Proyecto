@@ -1,5 +1,7 @@
 <?php
 
+include('fun/randomstring.php');
+
 $email = '';
 $nombre ='';
 $apellido = '';
@@ -105,13 +107,14 @@ if ($_POST) {
               'password' => password_hash($password,PASSWORD_DEFAULT),
               'empresa' => $empresa,
               'cuit' => $cuit,
+              'idEmpresa' => generateRandomString(5),
               ];
 
             $usuariosJson = json_encode($usuarios);
             file_put_contents('json/empresas.json',$usuariosJson);
 
             //SI VA BIEN REDIRIGE A SUCCESS.PHP
-            header("location: login.php?registered=true");
+            header("location: login.php?registered=true&perfil=empresa");
             //SI VA BIEN REDIRIGE A SUCCESS.PHP
       }
 
@@ -162,61 +165,21 @@ if ($_POST) {
 
           <!-- SELECCION DE PERFIL -->
 
-          <?php if ($perfil == 'usuario'): ?>
-
-              <!-- CAMPOS EN CASO DE USUARIOS -->
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
-                </div>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?= $nombre?>">
-                </div>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" name="apellido" placeholder="apellido" value="<?= $apellido?>">
-                </div>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" name="idEmpresa" placeholder="ID Empresa Ejemplo: AXQCFM" value="<?= $idEmpresa?>">
-                </div>
-
-                <div class="form-group">
-                  <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
-                </div>
-
-                <div class="form-group">
-                  <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
-                </div>
+                <!-- CAMPOS EN CASO DE USUARIOS -->
+                <?php
+                  if ($perfil == 'usuario'){
+                    include('fields/campos_register_usuario.php');
+                  }
+                ?>
                 <!-- CAMPOS EN CASO DE USUARIOS -->
 
-          <?php endif; ?>
-
-          <?php if ($perfil == 'empresa'): ?>
-
                 <!-- CAMPOS EN CASO DE EMPRESA -->
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="empresa" placeholder="Razon Social" value="<?= $idEmpresa?>">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="number" class="form-control" name="cuit" placeholder="CUIT Solo numeros." value="<?= $cuit?>">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="email" value="<?= $email?>">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" value="<?=$password?>">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="password" class="form-control" name="rePass" placeholder ="Vuelva a escribir la Contraseña" value="<?=$rePass?>">
-                  </div>
-                  <!-- CAMPOS EN CASO DE EMPRESA -->
-
-          <?php endif; ?>
+                <?php
+                  if ($perfil == 'empresa'){
+                    include('fields/campos_register_empresa.php');
+                  }
+                ?>
+                <!-- CAMPOS EN CASO DE EMPRESA -->
 
           </div>
 

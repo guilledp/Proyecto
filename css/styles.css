@@ -13,6 +13,7 @@
 
 .curso{
 	margin-bottom: 20px;
+	display: flex;
 }
 
 .cursos{
@@ -101,11 +102,11 @@ margin-bottom: .25rem;
 }
 
 
-div.videocurso {
+div.curso-video {
     margin-top: 3rem;
 }
 
-.videocurso {
+.curso-video {
 	position:relative;
 	padding-bottom:56.25%;
 	padding-top:30px;
@@ -113,7 +114,7 @@ div.videocurso {
 	overflow:hidden;
 }
 
-.videocurso iframe, .videocurso object, .videocurso embed {
+.curso-video iframe, .curso-video object, .curso-video embed {
 	position:absolute;
 	top:0;
 	left:0;
@@ -182,5 +183,38 @@ width: 100%;
 }
 
 .form-perfil{
-margin-bottom: 50px;	
+margin-bottom: 50px;
+}
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+
+.boton-agregar{
+	position: fixed;
+	bottom: 7.5;
+	right: 15;
+	z-index: 9999;
+}
+
+.curso-examen{
+	text-align: center;
+	margin-top: 30px;
 }

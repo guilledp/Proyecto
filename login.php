@@ -45,6 +45,7 @@ if ($_POST) {
                 if ($usuario['email']===$email) {
                   if (password_verify($pass,$usuario['password'])) {
                     $usuarioValido = true;
+                    $usuarioTipo = 'usuario';
                   }else {
                     $usuarioValido = false;
                   }
@@ -66,6 +67,7 @@ if ($_POST) {
                   if ($usuario['email']===$email) {
                     if (password_verify($pass,$usuario['password'])) {
                       $usuarioValido = true;
+                      $usuarioTipo = 'empresa';
                     }else {
                       $usuarioValido = false;
                     }
@@ -74,9 +76,7 @@ if ($_POST) {
     }
     //SI NO ENCUENTRA UN USUARIO BUSCAR UNA EMPRESA
 
-
-              //echo " <br> el email que esta en el campo es <br> " . $email;
-
+          //echo " <br> el email que esta en el campo es <br> " . $email;
           // echo "usuario valido:  ";
           // var_dump($usuarioValido);
           // var_dump($usuarios);
@@ -85,6 +85,7 @@ if ($_POST) {
             //INICIA SESION
             session_start();
             $_SESSION['id'] = $email;
+            $_SESSION['tipo'] = $usuarioTipo;
             //echo "<br>la sesion esta a nombre de <br>" ;
             //var_dump($_SESSION['id']);
             header("location: index.php");
@@ -96,7 +97,6 @@ if ($_POST) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

@@ -13,7 +13,6 @@
 
     <div class="navbar-nav align-items-end">
       <a class="nav-item nav-link active" href="index.php">Home</a>
-      <a class="nav-item nav-link" href="#">Mis Certificados</a>
       <a class="nav-item nav-link" href="profile.php">Perfil</a>
       <a class="nav-item nav-link" href="index.php?logout=bye">Salir</a>
     </div>

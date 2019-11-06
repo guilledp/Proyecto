@@ -4,7 +4,6 @@ include_once('session.php');
 
 ?>
 
-
 <html lang="es" dir="ltr">
 
   <head>
@@ -36,15 +35,23 @@ include_once('session.php');
 
     <main>
 
-      //*************REPITE ELCURSO
-      <div class="row cursos">
-
-          <div class="col-md-4 curso">
-          <a href="curso.php" class="btn btn-secondary btn-lg btn-block" >C003 - Riesgo electrico I</a>
+    <!-- AQUI VAN LOS CURSOS -->
+          <div class="row cursos">
+              <?php
+              for ($i=0; $i < 25 ; $i++) {
+                include('boton_curso.php');
+              }
+              ?>
           </div>
+    <!-- AQUI VAN LOS CURSOS -->
 
-      </div>
-      //*************REPITE ELCURSO
+    <!-- BOTON AGREGAR CURSO -->
+    <?php
+    if ($_SESSION['tipo'] == 'empresa') {
+      include('boton_curso_agregar.php');
+    }
+    ?>
+    <!-- BOTON AGREGAR CURSO -->
 
       <div class="vermas">
         <button type="button" class="btn btn-primary">ver todos los cursos</button>

@@ -4,7 +4,6 @@ include_once('session.php');
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
@@ -21,53 +20,51 @@ include_once('session.php');
 
     <?php include 'header.php'; ?>
 
-    <main>
+  <main>
 
 <div class="perfil row">
 
   <div class="col-md-8">
 
+    <!-- EDITAR CURSO EN CASO EMPRESA -->
+          <?php
+              if ($_SESSION['tipo'] == 'empresa') {
+                include('boton_curso_editar.php');
+              }
+              ?>
+    <!-- EDITAR CURSO EN CASO EMPRESA -->
+
     <div class="titulo-curso">
-
       <h1 class="display-1"> <b>  C001 - CURSO BASICO DE RCP Y PRIMEROS AUXILIOS</b> </h1>
-
     </div>
 
-    <div class="">
+    <h2 class="display-2">Mira el siguiente video</h2>
 
-      <h2 class="display-2">Mira el siguiente video</h2>
-
-    </div>
-
-    <div class="videocurso">
-
+    <div class="curso-video">
       <iframe id="ytplayer" type="text/html" width="720" height="405"
-      src="https://www.youtube.com/embed/gVKTgaldTWA?controls=0&modestbranding=1&playsinline=1&color=white"
-      frameborder="0" allowfullscreen>
+        src="https://www.youtube.com/embed/gVKTgaldTWA?controls=0&modestbranding=1&playsinline=1&color=white"
+        frameborder="0" allowfullscreen>
       </iframe>
-
     </div>
+
+    <!-- <h2 class="display-2">Material adicional</h2>
 
     <div class="">
+      <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=[https://www.your_website/file_name.pptx]' width='100%' height='600px' frameborder='0'>
+    </div> -->
 
-      <h2 class="display-2">Material adicional</h2>
-
+    <div class="curso-examen">
+      <h3>Estas listo? </h3>
+      <a href="nuevo_curso.php" class="btn btn-success btn-lg" >Hacer el Examen!</a>
     </div>
 
-    <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=[https://www.your_website/file_name.pptx]' width='100%' height='600px' frameborder='0'>
+
 
   </div>
 
+
+
 </div>
-
-
-
-
-
-
-
-
-
 
 
     </main>
