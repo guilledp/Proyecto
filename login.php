@@ -59,8 +59,7 @@ if ($_POST) {
       $contenidoJson = file_get_contents('json/empresas.json');
       $usuarios = json_decode($contenidoJson,true);
 
-                foreach ($usuarios as $usuario) {
-
+                foreach ((array) $usuarios as $usuario) {
                   //echo " <br> usuario registrado <br>" ;
                   //var_dump($usuario['email']);
 

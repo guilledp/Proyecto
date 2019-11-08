@@ -55,7 +55,7 @@ include_once('session.php');
 
     <div class="curso-examen">
       <h3>Estas listo? </h3>
-      <a href="nuevo_curso.php" class="btn btn-success btn-lg" >Hacer el Examen!</a>
+      <a href="examen.php" class="btn btn-success btn-lg" >Hacer el Examen!</a>
     </div>
 
 
